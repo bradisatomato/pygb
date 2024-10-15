@@ -19,6 +19,8 @@ def weblaunch():
     return ""
 def gameboy(rom: str):
     game = PyBoy(rom)
+    def gameshark():
+        game.gameshark.add(input("GameShark code: "))
     on_press_key("a", lambda _:game.button("a"))
     on_press_key("b", lambda _:game.button("b"))
     on_press_key("z", lambda _:game.button("start"))
@@ -27,6 +29,7 @@ def gameboy(rom: str):
     on_press_key("right", lambda _:game.button("right"))
     on_press_key("up", lambda _:game.button("up"))
     on_press_key("down", lambda _:game.button("down"))
+    on_press_key("g", lambda _:gameshark())
     while game.tick():
         pass
     game.stop()
